@@ -33,11 +33,13 @@ function addTodo() {
     .catch(err => console.error(err));
 }
 
+// Put replaces entire resource
+
 // PUT/PATCH REQUEST
 function updateTodo() {
   axios
     .patch('https://jsonplaceholder.typicode.com/todos/1', {
-      title: 'Updated Todo',
+      title: 'My Updated Todo',
       completed: true
     })
     .then(res => showOutput(res))
@@ -59,7 +61,7 @@ function getData() {
       axios.get('https://jsonplaceholder.typicode.com/todos?_limit=5'),
       axios.get('https://jsonplaceholder.typicode.com/posts?_limit=5')
     ])
-    .then(axios.spread((todos, posts) => showOutput(posts)))
+    .then(axios.spread((todos, posts) => showOutput(todos)))
     .catch(err => console.error(err));
 }
 
